@@ -1,0 +1,134 @@
+/* ========= Travel Theme — Global ========= */
+:root{
+    --bg-1:#071125;            /* night-sky */
+    --bg-2:#0b1020;
+    --glow:#f7e08c;            /* sun/sunset glow */
+    --cyan:#22d3ee;
+    --emerald:#34d399;
+    --pink:#f472b6;
+    --sand:#f2e9d8;
+    --slate-200:#e5ecf4;
+    --slate-300:#cbd5e1;
+    --slate-400:#94a3b8;
+    --ink:#0f172a;
+    --card: #0f172acc;         /* glass */
+    --ring: #ffffff26;
+  }
+  
+  *{box-sizing:border-box}
+  html,body,#root{height:100%}
+  body{
+    margin:0;
+    font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+    color:var(--slate-200);
+    background:
+      radial-gradient(1100px 600px at 85% -15%, var(--glow) 0%, #0000 55%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-2) 100%),
+      url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' opacity='.08'>\
+        <defs><pattern id='m' width='60' height='60' patternUnits='userSpaceOnUse'>\
+          <path d='M0 30h60M30 0v60' stroke='%23ffffff' stroke-width='1' stroke-opacity='.35'/>\
+        </pattern></defs><rect width='100%' height='100%' fill='url(%23m)'/>\
+      </svg>");
+    background-attachment: fixed, fixed, fixed;
+  }
+  
+  /* floating clouds */
+  .travel-clouds{position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.25}
+  .travel-clouds .c{
+    position:absolute; border-radius:999px; filter:blur(12px);
+    background: radial-gradient(circle at 30% 40%, #fff, #fff0 60%);
+    animation: drift var(--t,80s) linear infinite;
+  }
+  .travel-clouds .c:nth-child(1){width:420px;height:140px;left:-20%;top:10%;--t:85s}
+  .travel-clouds .c:nth-child(2){width:520px;height:180px;left:65%;top:18%;--t:95s;animation-direction:reverse}
+  .travel-clouds .c:nth-child(3){width:360px;height:120px;left:-15%;top:52%;--t:78s}
+  .travel-clouds .c:nth-child(4){width:620px;height:200px;left:70%;top:66%;--t:90s;animation-direction:reverse}
+  @keyframes drift{to{transform:translateX(140vw)}}
+  
+  /* ========= Layout Shell ========= */
+  .app-wrap{position:relative; z-index:1; padding:24px clamp(16px,4vw,48px); max-width:1200px; margin:auto}
+  .header{
+    display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px; letter-spacing:.5px; font-weight:800; text-transform:uppercase;
+    font-size:clamp(18px,2.6vw,26px);
+    background:linear-gradient(90deg,#fff,var(--cyan),var(--emerald),var(--pink));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .brand-badge{
+    width:40px;height:40px;border-radius:14px; display:grid; place-items:center;
+    background:conic-gradient(from 210deg, var(--cyan), var(--emerald), var(--pink));
+    box-shadow:0 6px 18px #0006, inset 0 0 0 2px #ffffff1a;
+  }
+  .brand-badge::after{content:"✈️"; filter:drop-shadow(0 2px 1px #0005)}
+  
+  .nav-links{display:flex; gap:14px}
+  a.link, .link{color:#b6f1ff;text-decoration:none;font-weight:700}
+  a.link:hover{text-decoration:underline}
+  
+  /* ========= Cards / Sections ========= */
+  .section{
+    background:var(--card);
+    border-radius:18px;
+    padding:18px;
+    box-shadow:0 18px 40px #0009, inset 0 0 0 1px var(--ring);
+    backdrop-filter: blur(12px);
+  }
+  .section + .section{margin-top:16px}
+  .section h2{margin:.25rem 0 10px; font-size:20px}
+  
+  /* list of trips */
+  .trip-list{display:grid; gap:10px}
+  .trip-item{
+    display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px;
+    padding:12px 14px; border-radius:14px; background:#ffffff12; box-shadow: inset 0 0 0 1px var(--ring);
+  }
+  .trip-item .title{font-weight:800}
+  .trip-item .sub{font-size:13px; color:var(--slate-300)}
+  .badge{
+    font-size:12px; padding:6px 10px; border-radius:999px; background:#ffffff14; box-shadow: inset 0 0 0 1px var(--ring);
+  }
+  
+  /* ========= Buttons / Inputs ========= */
+  .btn{
+    appearance:none; border:0; cursor:pointer; font-weight:700;
+    padding:10px 14px; border-radius:14px; color:#0b1020;
+    background: linear-gradient(135deg, var(--emerald), var(--pink));
+    box-shadow:0 8px 20px #0008, inset 0 0 0 1px #ffffff33;
+    transition: transform .15s ease, box-shadow .2s ease, opacity .2s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); box-shadow:0 14px 30px #000a, inset 0 0 0 1px #ffffff55 }
+  .btn:disabled{opacity:.6; cursor:not-allowed}
+  .btn.ghost{
+    background:#ffffff12; color:#e9f2ff;
+    box-shadow: inset 0 0 0 1px var(--ring);
+  }
+  
+  .input, .select{
+    width:100%; padding:10px 12px; border-radius:12px;
+    background:#ffffff0f; color:#eaf2ff; border:0; outline:none;
+    box-shadow: inset 0 0 0 1px var(--ring);
+  }
+  .input::placeholder{color:#a8b6c7}
+  
+  /* ========= Create Trip form ========= */
+  .form-grid{display:grid; gap:12px}
+  .form-row{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+  .helper{font-size:12px; color:var(--slate-400)}
+  
+  /* ========= Empty states ========= */
+  .empty{
+    text-align:center; color:#b6c7db; padding:24px; border:1px dashed #ffffff22; border-radius:14px;
+  }
+  
+  /* ========= Tiny utilities ========= */
+  .space-between{display:flex; justify-content:space-between; align-items:center; gap:12px}
+  .mt-2{margin-top:.5rem} .mt-3{margin-top:.75rem} .mt-4{margin-top:1rem}
+  
+
+  .map{ height: 360px; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px #0009, inset 0 0 0 1px #ffffff22; }
+
+
+  
