@@ -1,33 +1,48 @@
+#Dullah’s Trip Planner – Simple Edition  
+_(AI-powered travel planning app)_
 
-# AI Trip Planner — Simple Edition (No TanStack, No TypeScript)
-
-**Backend:** Express + JWT + SQLite (better-sqlite3)  
+**Backend:** Express + SQLite (better-sqlite3) + Supabase Auth + OpenAI  
 **Frontend:** Vite + React + React Router DOM v6 + Leaflet
 
-### Backend
-```
+---
+
+#Features
+
+- 💬 AI chat that generates detailed trip plans & itineraries
+- 🧳 Save, edit, and view trips (with Supabase authentication)
+- 🗺️ Interactive map using Leaflet
+- 🧠 Local SQLite database for persistent data
+- ☁️ Easy deployment with **Render (API)** + **Vercel (Web)**
+
+---
+
+## 🧩 Project Structure
+
+Dullahs-Trip-Planner/
+│
+├── api/ # Express backend (Node.js)
+│ ├── server.js # Main server entry
+│ ├── routes/ # Chat, Trips, Auth routes
+│ ├── data.db # SQLite database (auto-created)
+│ └── .env # Local environment variables
+│
+├── web/ # Vite + React frontend
+│ ├── main.jsx
+│ ├── pages/
+│ ├── styles.css
+│ └── .env
+│
+└── README.md
+
+#Backend
+
+```bash
 cd api
-cp .env.example .env
-npm i
+npm install
 npm run dev
-```
-Runs at http://localhost:4000
 
-### Frontend
-```
+#Frontend
 cd ../web
-npm i
+npm install
 npm run dev
-```
-Open http://localhost:5173
-
-**Demo user**: demo@demo.com / demo123
-
-### api/.env (optional)
-```
-PORT=4000
-JWT_SECRET=dev_change_me
-OPENAI_API_KEY=
-GOOGLE_MAPS_API_KEY=
-CORS_ORIGIN=http://localhost:5173
 ```

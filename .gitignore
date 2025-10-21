@@ -1,0 +1,21 @@
+# ───── Node / Vite / React build outputs ─────
+node_modules/
+dist/
+build/
+.DS_Store
+
+# ───── Environment & secrets ─────
+.env
+.env.*
+api/.env
+web/.env
+
+# ───── SQLite / local data ─────
+data.db
+*.sqlite
+*.sqlite3
+
+# ───── Logs ─────
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
